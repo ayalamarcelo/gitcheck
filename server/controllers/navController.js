@@ -5,4 +5,4 @@ function goIndex(req, res) {
     res.sendFile(filePath)
 }
 
-module.exports = goIndex
+module.exports = { goIndex }
