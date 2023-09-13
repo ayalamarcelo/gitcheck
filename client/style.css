@@ -95,8 +95,14 @@ p {
     }
 
     .about-us #img {
-        padding: 0px 50px 0px 0px;
+        margin-left: 0px 50px 0px 0px;
         max-width: 100%;
         max-height: auto;
+    }
+}
+
+@media (width <= 900px) {
+    .about-us {
+        flex-direction: column;
     }
 }
