@@ -7,7 +7,7 @@
 
 body {
     display: flex;
-    margin: 15px;
+    margin: 20px;
     background-color: #22272e;
 }
 
@@ -44,7 +44,7 @@ body {
     background-color: #2d333b;
     color: #768390;
     border-radius: 10px;
-    border: .9px solid #687480;
+    border: 1px solid #687480;
 }
 
 .aside {
@@ -119,6 +119,8 @@ body {
     flex-direction: column;
 }
 
+/* @media queries */
+
 @media (width <=1025px) {
     .container {
         display: flex;
@@ -154,7 +156,7 @@ body {
     }
 }
 
-@media (width <= 400px) {
+@media (width <=400px) {
     .about-us {
         flex-direction: column;
     }
