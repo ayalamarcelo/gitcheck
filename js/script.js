@@ -4,16 +4,15 @@ document.getElementById('checkButton').addEventListener('click', async () => {
 
   try {
     const response = await fetch('/api/not-following-back');
-    
-    // Verificar si la respuesta es JSON
+    console.log('Solicitud recibida en /api/not-following-back');
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
-    console.log('Response:', await response.text()); // Log para depurar la respuesta cruda
-    const notFollowingBack = await response.json();
 
-    console.log('Parsed JSON:', notFollowingBack); // Log para depurar el JSON parseado
+    const notFollowingBack = await response.json(); // Leer el cuerpo de la respuesta como JSON
+
+    console.log('Parsed JSON:', notFollowingBack);
 
     if (notFollowingBack.length) {
       resultDiv.innerHTML = '<h3>Usuarios que no te siguen de vuelta:</h3>';
@@ -29,6 +28,6 @@ document.getElementById('checkButton').addEventListener('click', async () => {
     }
   } catch (error) {
     resultDiv.innerHTML = `Error: ${error.message}`;
-    console.error('Error:', error); // Log para depurar el error
+    console.error('Error:', error);
   }
 });

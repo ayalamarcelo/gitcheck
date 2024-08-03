@@ -1,7 +1,8 @@
+require('dotenv').config();
 const axios = require('axios');
 
-const GITHUB_TOKEN = 'your_github_token';
-const USERNAME = 'your_username'; 
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const USERNAME = process.env.USERNAME; 
 
 const headers = {
   Authorization: `token ${GITHUB_TOKEN}`
@@ -36,10 +37,10 @@ const main = async () => {
   const notFollowingBack = [...followingUsernames].filter(username => !followerUsernames.has(username));
 
   if (notFollowingBack.length) {
-    console.log("Usuarios que no te siguen de vuelta:");
+    console.log("Users who do not follow you back:");
     notFollowingBack.forEach(user => console.log(user));
   } else {
-    console.log("Todos los usuarios a los que sigues te siguen de vuelta.");
+    console.log("Every user you follow follows you back.");
   }
 };
 
