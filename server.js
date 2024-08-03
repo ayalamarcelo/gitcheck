@@ -1,13 +1,28 @@
 const express = require('express');
 const axios = require('axios');
 const querystring = require('querystring');
+require('dotenv').config();
+
 
 const app = express();
 const port = 3000;
 
-const CLIENT_ID = 'your_client_id';
-const CLIENT_SECRET = 'your_client_secret';
-const REDIRECT_URI = 'http://localhost:3000/github/callback';
+// Middleware
+const helmet = require('helmet');
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'none'"],
+      imgSrc: ["http://localhost:3000"],
+    },
+  })
+);
+
+
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
 
 app.get('/github/login', (req, res) => {
   const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
