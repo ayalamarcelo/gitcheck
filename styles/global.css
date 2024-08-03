@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background-color: #1c2128;
+    background-image: url(../assets/waves.svg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+}
+
+#stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    color: #ecf2f8;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin: 0;
+}
+
+i {
+    font-size: 24px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#checkButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 25px;
+    color: #1c2128;
+    background: #86efac;
+    border-radius: 15px;
+    border: none;
+    font-size: 0.9em;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s ease-in-out;
+}
+
+#checkButton i {
+    margin-right: 8px;
+}
+
+#checkButton:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+#checkButton:hover {
+    background: #6ee899;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+.star {
+    position: absolute;
+    background-color: #fff;
+    color: #fff;
+    width: 4px;
+    height: 4px;
+    opacity: 0.7;
+    border-radius: 0;
+    animation: moveStar linear infinite;
+}
+
+img {
+    width: 175px;
+    -webkit-user-drag: none;
+    pointer-events: none;
+    object-fit: cover;
+    filter: drop-shadow(0 0 10px #2a323d);
+    animation: moveOcto 3s ease-in-out infinite;
+}
+
+@keyframes moveOcto {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes moveStar {
+    0% {
+        transform: translateY(-35vh);
+    }
+
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@media (max-width: 30em) {
+    .star {
+        width: 2px;
+        height: 2px;
+    }
+}
