@@ -4,18 +4,18 @@ document.getElementById('checkButton').addEventListener('click', async () => {
 
   try {
     const response = await fetch('/api/not-following-back');
-    console.log('Solicitud recibida en /api/not-following-back');
+    console.log('Application received in /api/not-following-back');
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const notFollowingBack = await response.json(); // Leer el cuerpo de la respuesta como JSON
+    const notFollowingBack = await response.json(); // Read response body as JSON
 
     console.log('Parsed JSON:', notFollowingBack);
 
     if (notFollowingBack.length) {
-      resultDiv.innerHTML = '<h3>Usuarios que no te siguen de vuelta:</h3>';
+      resultDiv.innerHTML = '<h3>Users who do not follow you back:</h3>';
       const ul = document.createElement('ul');
       notFollowingBack.forEach(user => {
         const li = document.createElement('li');
@@ -24,7 +24,7 @@ document.getElementById('checkButton').addEventListener('click', async () => {
       });
       resultDiv.appendChild(ul);
     } else {
-      resultDiv.innerHTML = 'Todos los usuarios a los que sigues te siguen de vuelta.';
+      resultDiv.innerHTML = 'All the users you follow and follow you back.';
     }
   } catch (error) {
     resultDiv.innerHTML = `Error: ${error.message}`;
